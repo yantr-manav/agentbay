@@ -1,0 +1,214 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+/* Definition of the design system with cyberpunk theme */
+
+@layer base {
+  :root {
+    --background: 13 13 13; /* #0D0D0D */
+    --foreground: 255 255 255; /* white */
+
+    --card: 18 18 18; /* #121212 */
+    --card-foreground: 255 255 255;
+
+    --popover: 18 18 18;
+    --popover-foreground: 255 255 255;
+
+    --primary: 139 92 246; /* cyber-violet */
+    --primary-foreground: 255 255 255;
+
+    --secondary: 30 30 30;
+    --secondary-foreground: 255 255 255;
+
+    --muted: 30 30 30;
+    --muted-foreground: 163 163 163;
+
+    --accent: 0 212 255; /* cyber-aqua */
+    --accent-foreground: 13 13 13;
+
+    --destructive: 239 68 68;
+    --destructive-foreground: 255 255 255;
+
+    --border: 39 39 42;
+    --input: 39 39 42;
+    --ring: 139 92 246;
+
+    --radius: 1.5rem;
+
+    --sidebar-background: 13 13 13;
+    --sidebar-foreground: 255 255 255;
+    --sidebar-primary: 139 92 246;
+    --sidebar-primary-foreground: 255 255 255;
+    --sidebar-accent: 30 30 30;
+    --sidebar-accent-foreground: 255 255 255;
+    --sidebar-border: 39 39 42;
+    --sidebar-ring: 139 92 246;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-cyber-black text-foreground font-['Space_Grotesk',sans-serif] antialiased;
+    background: radial-gradient(ellipse at top, rgba(139, 92, 246, 0.05) 0%, #0D0D0D 70%);
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-cyber-dark;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-cyber-violet rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-cyber-aqua;
+  }
+}
+
+@layer components {
+  .glass-effect {
+    @apply backdrop-blur-sm bg-white/5 border border-white/10;
+  }
+
+  .neon-border {
+    @apply border border-transparent bg-gradient-to-r from-cyber-violet via-cyber-aqua to-cyber-magenta;
+    background-clip: padding-box;
+  }
+
+  .cyber-button {
+    @apply relative overflow-hidden bg-gradient-to-r from-cyber-violet to-cyber-aqua text-white font-medium px-8 py-4 rounded-2xl transition-all duration-300 hover:scale-105 hover:shadow-2xl;
+  }
+
+  .cyber-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+  }
+
+  .cyber-button:hover::before {
+    left: 100%;
+  }
+
+  .text-cyber-gradient {
+    @apply bg-gradient-to-r from-cyber-violet via-cyber-aqua to-cyber-magenta bg-clip-text text-transparent;
+  }
+
+  .animate-glow {
+    animation: glow-pulse 2s ease-in-out infinite;
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .animate-neon-flicker {
+    animation: neon-flicker 2s ease-in-out infinite;
+  }
+
+  .animate-slide-in-up {
+    animation: slide-in-up 1s ease-out;
+  }
+
+  .animate-fade-in {
+    animation: fade-in 1s ease-out;
+  }
+
+  .particle-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      radial-gradient(circle at 20% 50%, rgba(139, 92, 246, 0.3) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(0, 212, 255, 0.3) 0%, transparent 50%),
+      radial-gradient(circle at 40% 80%, rgba(255, 0, 255, 0.3) 0%, transparent 50%);
+    animation: float 6s ease-in-out infinite;
+  }
+}
+
+@keyframes glow-pulse {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(0, 212, 255, 0.8);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes neon-flicker {
+  0%, 100% {
+    text-shadow: 0 0 10px rgba(0, 212, 255, 0.8);
+  }
+  50% {
+    text-shadow: 0 0 20px rgba(139, 92, 246, 1);
+  }
+}
+
+@keyframes slide-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Custom cursor effect */
+.cursor-glow {
+  cursor: none;
+}
+
+.cursor-glow::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.8) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: screen;
+}
