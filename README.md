@@ -2,7 +2,7 @@
 
 ## Project info
 
-**URL**: [https://lovable.dev/projects/bad2d055-8864-496b-9083-79cb2d0ee96b](https://agentbay.vercel.app/)
+**URL**: [Deployed version](https://agentbay.vercel.app/)
 
 ## How can I edit this code?
 
