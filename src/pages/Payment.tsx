@@ -1,17 +1,18 @@
+import { useState, useEffect, useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-import { useState, useEffect } from 'react';
 import Navigation from '../components/Navigation';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { useAuth } from '@/hooks/useAuth';
 import { useToast } from '@/hooks/use-toast';
+
 import { Elements } from '@stripe/react-stripe-js';
 import stripePromise, { STRIPE_CONFIG } from '@/lib/stripe';
 import StripePaymentForm from '@/components/StripePaymentForm';
 import { paymentService } from '@/services/index';
-import { useNavigate } from 'react-router-dom';
-import { useCallback } from 'node_modules/react-resizable-panels/dist/declarations/src/vendor/react';
-import { useCallback } from 'node_modules/react-resizable-panels/dist/declarations/src/vendor/react';
+
+import { Panel, PanelGroup, PanelResizeHandle } from "react-resizable-panels";
 
 const Payment = () => {
   const [selectedPlan, setSelectedPlan] = useState('premium');
